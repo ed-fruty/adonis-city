@@ -17,8 +17,21 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 
-Route.get('/login', 'AuthController.form').as('auth.form')
-Route.post('/login', 'AuthController.login').as('auth.login')
+Route
+    .get('/login', 'AuthController.form')
+    .as('auth.form')
+    .middleware('guest')
+
+Route
+    .post('/login', 'AuthController.login')
+    .as('auth.login')
+    .middleware('guest')
+    .validator('App/Validators/LoginUserValidator')
+
+Route
+    .get('/logout', 'AuthController.logout')
+    .as('auth.logout')
+    .middleware('auth')    
 
 Route
     .get('/profile/:id', 'ProfileController.index')

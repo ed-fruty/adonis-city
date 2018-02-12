@@ -24,7 +24,7 @@ class ScaffoldSeeder {
 
     const users = await Factory
         .model('App/Models/User')
-        .createMany(2)
+        .createMany(5)
  
     const projects = await Factory
         .model('App/Models/Project')
@@ -32,7 +32,7 @@ class ScaffoldSeeder {
 
 
     projects.forEach(project => {
-        users.forEach(async function (user) {
+        users.forEach(async (user) => {
             const member = new ProjectMember()
                 
             member.user_id = user.id

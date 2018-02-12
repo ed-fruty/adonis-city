@@ -8,11 +8,19 @@ class AuthController {
     }
 
     async login ({ request, auth, response}) {
+
         const { email, password } = request.all()
 
-        const result = await auth.attempt(email, password)
+        await auth.attempt(email, password)
 
-        return response.route('profile', {'id' : auth.user.id});
+        return response.route('profile.index', {'id' : auth.user.id});
+    }
+
+    async logout ({auth, response}) {
+
+        await auth.logout();
+
+        return response.route('auth.form');
     }
 
 }

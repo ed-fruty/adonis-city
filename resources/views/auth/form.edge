@@ -1,12 +1,19 @@
 <html>
-    {{ auth.user }}
     <body>
-        <form action="{{ route('auth.login') }}" method="POST">
+        <form method="POST" action="{{ route('auth.login') }}">
             {{ csrfField() }}
+          <div>
+            <input type="text" name="email" value="{{ old('email', '') }}" />
+            {{ elIf('<span>$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
+          </div>
 
-            <input type="text" name="email"><br>
-            <input type="text" name="password"><br>
-            <input type="submit" value="Login">
+          <div>
+            <input type="password" name="password" />
+            {{ elIf('<span>$self</span>', getErrorFor('password'), hasErrorFor('password')) }}
+          </div>
+
+          <button type="submit"> Login </button>
         </form>
+
     </body>
 </html>

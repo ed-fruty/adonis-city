@@ -1,20 +1,21 @@
 <html>
     <body>
         
-        <h1>
+        <h2>
             Hello, {{ auth.user.username }}
-        </h1>
-
+        </h2>
+        <a href="{{ route('auth.logout') }}">logout</a>
+        <hr>
         <div>
-            <h3>Personal information</h3>
+            <h3>{{ user.username.toUpperCase() }} personal information:</h3>
             <div>
                 Profile name: {{ user.username }} <br>
                 Profile email: {{ user.email }}
             </div>
         </div>
-
+        <hr>
         <div>
-            <h3>{{ user.username }} works with projects:</h3>
+            <h3>{{ user.username.toUpperCase() }} works with projects:</h3>
 
             <ul>
                 @each(project in projects)
