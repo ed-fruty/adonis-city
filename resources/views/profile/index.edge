@@ -1,0 +1,26 @@
+<html>
+    <body>
+        
+        <h1>
+            Hello, {{ auth.user.username }}
+        </h1>
+
+        <div>
+            <h3>Personal information</h3>
+            <div>
+                Profile name: {{ user.username }} <br>
+                Profile email: {{ user.email }}
+            </div>
+        </div>
+
+        <div>
+            <h3>{{ user.username }} works with projects:</h3>
+
+            <ul>
+                @each(project in projects)
+                    <li>{{ project.name }}</li>
+                @endeach
+            </ul>
+        </div>
+    </body>
+</html>
